@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.90">
+  <title>QR y BUNKER</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background-color: #000; /* Fondo negro */
+      color: #FFD700; /* Texto amarillo */
+    }
+    .container {
+      width: 100%;
+      text-align: center;
+    }
+    .qr-container {
+      width: 95%;
+      max-width: 400px; /* Limite máximo opcional */
+      border: 5px solid #FFD700; /* Borde amarillo */
+      border-radius: 15px; /* Bordes redondeados */
+      padding: 5px;
+      box-shadow: 0 12px 24px rgba(255, 0, 0, 0.9); /* Sombra roja más intensa */
+      margin-bottom: 20px;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      box-shadow: 0 8px 16px rgba(255, 0, 0, 0.8); /* Sombra roja en la imagen */
+      border-radius: 10px; /* Bordes redondeados adicionales */
+    }
+    /* Aplicamos bordes redondeados y sombras rojas a los contenedores de texto */
+    .text-container,
+    .footer-text {
+      display: inline-block; /* Permite aplicar bordes */
+      padding: 10px 20px; /* Agrega espacio interior */
+      border-radius: 10px; /* Bordes redondeados */
+      border: 2px solid #FFD700; /* Bordes amarillos de 2px */
+      font-weight: bold; /* Texto más grueso */
+      text-shadow: 4px 4px 10px rgba(255, 0, 0, 0.9); /* Sombra roja más intensa */
+      box-shadow: 0 8px 16px rgba(255, 0, 0, 0.9); /* Sombra roja adicional */
+      margin: 10px 0;
+    }
+    .text-container {
+      font-size: 32px; /* Texto agrandado */
+    }
+    .footer-text {
+      font-size: 60px; /* Texto grande */
+      font-family: 'Impact', sans-serif; /* Estilo industrial */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="qr-container">
+      <img id="qr-image" src="https://via.placeholder.com/400x400.png?text=QR+Code" alt="Código QR">
+    </div>
+    <div id="nombre-container" class="text-container">
+      Nombre aquí
+    </div>
+    <div id="apellido-container" class="text-container">
+      Apellido aquí
+    </div>
+    <div class="footer-text">
+      BUNKER
+    </div>
+  </div>
+
+  <script>
+    // Función para recibir datos de URL
+    function obtenerDatosDeURL() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const nombre = urlParams.get('nombre') || 'Nombre no definido';
+      const apellido = urlParams.get('apellido') || 'Apellido no definido';
+      const qr = urlParams.get('qr') || 'https://via.placeholder.com/400x400.png?text=QR+Code';
+
+      // Asignar los valores a los elementos
+      document.getElementById('nombre-container').textContent = nombre;
+      document.getElementById('apellido-container').textContent = apellido;
+      document.getElementById('qr-image').src = qr;
+    }
+
+    // Llamar a la función para asignar los valores
+    obtenerDatosDeURL();
+  </script>
+</body>
+</html>
